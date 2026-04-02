@@ -62,7 +62,25 @@ namespace LoginScreen
             }
             else
             {
-                MessageBox.Show("로그인 실패~");
+                MessageBox.Show("로그인 실패~", "로그인", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //e.SuppressKeyPress = true; // 기본 비프음 방지 (내 컴퓨터에서 오류 발생하여 주석처리)
+                txtPW.Focus(); // 패스워드 입력창이 포커스를 갖게끔
+            }
+        }
+
+        private void txtPW_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //e.SuppressKeyPress = true; // 기본 비프음 방지 (내 컴퓨터에서 오류 발생하여 주석처리)
+                btnLogin.PerformClick(); // 버튼이 눌린 것처럼 만들기}
             }
         }
     }
