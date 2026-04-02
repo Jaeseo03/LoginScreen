@@ -10,9 +10,19 @@
 - 사용한 플랫폼: 
 	- C#, .NET Windows Forms, Visual Studio, GitHub
 - 사용한 컨트롤: 
-	- 
+	- TextBox: 사용자 아이디 및 비밀번호 입력 (Placeholder 및 UseSystemPasswordChar 속성 제어)
+	- Label: 프로그램 제목 표시 및 로그인 실패 시 인라인 에러 메시지(lblErrorMsg) 출력
+	- Button: 로그인 인증 실행(btnLogin) 및 입력 필드 전체 초기화(btnClear)
+	- CheckBox: 비밀번호 암호화 해제 및 시각화 제어(chkShowPW)
+	- TableLayoutPanel: 창 크기 변화에 대응하는 유연한 1열 5행 그리드 레이아웃 구조
+
 - 사용한 기술과 구현한 기능: 
-	- 
+	- 사용자 인증 로직: if-else 조건문과 논리 연산자(&&)를 사용하여 저장된 상수(admin, superman)와 입력값 비교 검증
+	- 동적 UI 가시성 제어: Visible 속성을 활용해 메시지 박스 없이 화면 내에서 실시간 에러 피드백 제공
+	- Placeholder 인터페이스: Enter 및 Leave 이벤트를 이용해 입력 가이드 텍스트와 실제 입력 데이터의 시각적 분리(Color 및 Text 제어)
+	- 키보드 포커스 워크플로우: KeyDown 이벤트와 Focus(), PerformClick() 메서드를 연동하여 엔터키만으로 로그인 가능한 환경 구축
+
+보안 및 편의 기능: UseSystemPasswordChar 속성 동적 변경을 통한 비밀번호 숨기기/보이기 토글 기능 구현
 ---
 
 ## 📸 단계별 실행 화면
@@ -71,13 +81,21 @@
 ![과제3 실행화면](img/screenshot-3.gif)
 
 - 과제 내용:
-	- 
+	- 입력 편의성 극대화: 사용자가 마우스 조작을 최소화하고 키보드만으로 로그인을 완료할 수 있는 환경을 구축합니다.
+	- 데이터 관리 편의성: 입력된 정보를 한꺼번에 삭제하거나, 입력 중인 비밀번호를 시각적으로 확인할 수 있는 부가 기능을 추가합니다.
+	- 인터랙티브 UI 구현: 사용자의 행동(포커스 진입, 체크박스 선택 등)에 따라 실시간으로 반응하는 인터페이스를 완성합니다.
 
 - 구현 내용과 기능 설명:
-	- 
+	- 키보드 내비게이션 최적화: txtID에서 Enter 입력 시 txtPW로 포커스를 이동시키고, txtPW에서 Enter 입력 시 곧바로 btnLogin이 실행되도록 설정하여 작업 속도를 개선하였습니다.
+	- 입력 폼 일괄 초기화: '전체 지우기' 기능을 통해 txtID와 txtPW를 초기 Placeholder 상태로 되돌리고, 활성화되어 있던 에러 메시지(lblErrorMsg)를 즉시 숨기도록 구현하였습니다.
+	- 비밀번호 가독성 제어: CheckBox의 선택 상태에 따라 UseSystemPasswordChar 속성을 동적으로 변경하여, 사용자가 필요 시 비밀번호를 일반 텍스트로 확인할 수 있도록 하였습니다.
+	- 상태 기반 Placeholder: Enter와 Leave 이벤트를 통해 안내 문구("아이디", "패스워드")를 제어하며, 비밀번호 입력 시에만 시스템 보안 문자가 작동하도록 정교하게 설계하였습니다.
 
 - 사용한 기술과 구현한 기능:
-	- 
+	- 이벤트 핸들링: KeyDown 이벤트를 이용한 키 입력 감지 및 CheckedChanged을 통한 체크박스 상태 추적
+	- 컨트롤 메서드 활용: Clear(), Focus() 및 PerformClick()을 이용한 하드웨어 조작 시뮬레이션
+	- 동적 속성 변경: UseSystemPasswordChar와 ForeColor를 이용한 실시간 UI 상태 업데이트
+	- 상태 유지 로직: 변수(myID, myPW)와 입력값의 실시간 비교 및 UI 피드백 동기화
 
 
 ---
